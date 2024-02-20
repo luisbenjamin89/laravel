@@ -2,7 +2,7 @@
 
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
-
+use \App\Http\Controllers;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -17,7 +17,7 @@ Route::view("main", "main");
 Route::view("about", "about");
 Route::view("contacta", "contacta");
 
-
+Route::resource("alumnos",Controllers\AlumnoController::class);
 Route::get('/', function () {
     return view('welcome');
 });
