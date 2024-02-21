@@ -17,6 +17,7 @@ Route::view("main", "main");
 Route::view("about", "about");
 Route::view("contacta", "contacta");
 
+
 Route::resource("alumnos",Controllers\AlumnoController::class);
 Route::get('/', function () {
     return view('welcome');

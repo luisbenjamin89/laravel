@@ -22,7 +22,7 @@ class AlumnoController extends Controller
      */
     public function create()
     {
-        //
+        return view("Alumnos.create");
     }
 
     /**
@@ -30,7 +30,13 @@ class AlumnoController extends Controller
      */
     public function store(StoreAlumnoRequest $request)
     {
-        //
+       //
+        $valores =$request->input();
+        $alumno =new Alumno($valores);
+        $alumno -> save();
+        $alumnos= Alumno::all();
+        return view("Alumnos.listado",["alumnos"=>$alumnos]);
+
     }
 
     /**
@@ -62,6 +68,9 @@ class AlumnoController extends Controller
      */
     public function destroy(Alumno $alumno)
     {
+        $alumno->delete();
+        $alumnos = Alumno::all();
+        return view("Alumnos.listado", ["alumnos" => $alumnos]);
         //
     }
 }
