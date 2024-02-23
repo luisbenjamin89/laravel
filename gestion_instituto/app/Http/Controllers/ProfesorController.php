@@ -68,7 +68,7 @@ class ProfesorController extends Controller
         $profesor = Profesor::find($id);
        $valores = $request->input();
        $profesor->update($valores);
-        session()->flash("status", "se actulizo correctamente el profesor ");
+        session()->flash("status", "se actulizo correctamente el profesor $profesor->nombre");
       $profesor = Profesor::all();
      return view("Profesores.listado_profesore", ["Profesor" => $profesor]);
         //
