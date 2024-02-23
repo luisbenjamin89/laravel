@@ -2,7 +2,8 @@
 
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
-use \App\Http\Controllers;
+use \App\Http\Controllers\AlumnoController;
+use \App\Http\Controllers\ProfesorController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -18,10 +19,13 @@ Route::view("about", "about");
 Route::view("contacta", "contacta");
 
 
-Route::resource("alumnos",Controllers\AlumnoController::class);
+Route::resource("alumnos",AlumnoController::class);
+
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::resource("proefesores",ProfesorController::class);
 
 Route::get('/dashboard', function () {
     return view('dashboard');

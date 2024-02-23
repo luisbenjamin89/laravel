@@ -18,10 +18,10 @@ class ProfesorFactory extends Factory
     {
         $departamento= ['Ingeniería', 'Administración','comercio'];
         return [
-           'nombre' => $this->faker->name(),
-           'apellido' => $this->faker->lastname(),
-           'email' => $this->faker->unique()->safeEmail(),
-           'departamento' => $this->faker()->andomElement($departamento),
+           'nombre' => fake()->name(),
+           'apellido' => fake()->lastname(),
+           'email' => fake()->unique()->safeEmail(),
+           'departamento' => fake()->randomElement($departamento),
         ];
     }
 }
