@@ -2,7 +2,7 @@
 *levantar serdor - php artisan serve
 \*levanrar contenedores - docker compose -d
 
-##creando un CRUD para profesor
+## creando un CRUD para profesor
 
 creo un ecositema
 
@@ -72,3 +72,40 @@ Profesor::factory()->count(100)->create();
 \*ejecutar la migracion
 
 -   si quieres borror todo y volver a crear las tablas y a poblarlas se hace asi (php artisan migrate:fresh --seed )
+
+## mostrar los datos de los profesores
+
+\*creamo un vista para listar los datos de los profesores dicha lista tiene que extender del layout que ya tengo configurado
+
+<x-layouts.layout>  
+</x-layouts.layout>
+
+*agregamos una tabla de tailwind de la libreria daysi
+*agregamos un foreach en el cual recuperamos los datos que enviamos desde el controlador
+
+--controlador
+public function index()
+{
+$profesor=Profesor::all();
+        return view("Profesores.listado_profesore",["Profesor"=>$profesor]);
+//
+}
+
+    y lo recumermos en la vista
+
+    --lista profesor
+
+ <tbody>
+            @foreach($Profesor as $profesor)
+                <tr>
+                    <td>{{$profesor -> nombre}}</td>
+                    <td>{{$profesor -> apellido}}</td>
+                   <td>{{$profesor -> email}}</td>
+                    <td>{{$profesor -> departamento}}</td>
+                   
+                </tr>
+            @endforeach
+
+            </tbody>
+
+## Eliminar profesores 
