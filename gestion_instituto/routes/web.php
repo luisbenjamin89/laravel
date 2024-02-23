@@ -25,7 +25,7 @@ Route::get('/', function () {
     return view('main');
 });
 
-Route::resource("proefesores",ProfesorController::class);
+Route::resource("Profesores",ProfesorController::class);
 
 Route::get('/dashboard', function () {
     return view('dashboard');

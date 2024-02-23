@@ -13,8 +13,8 @@ class ProfesorController extends Controller
      */
     public function index()
     {
-         $profesor=Profesor::all();
-        return view("Profesores.listado_profesore",["Profesor"=>$profesor]);
+        $profesor = Profesor::all();
+        return view("Profesores.listado_profesore", ["Profesor" => $profesor]);
         // 
     }
 
@@ -23,6 +23,7 @@ class ProfesorController extends Controller
      */
     public function create()
     {
+        return view("Profesores.agregar_profesores");
         //
     }
 
@@ -31,6 +32,12 @@ class ProfesorController extends Controller
      */
     public function store(StoreprofesorRequest $request)
     {
+        $valores = $request->input();
+        $profesor = new Profesor($valores);
+        $profesor->save();
+        $profesor = Profesor::all();
+        session()->flash("status", "Profesor agregado correctamente");
+        return view("Profesores.listado_profesore", ["Profesor" => $profesor]);
         //
     }
 
@@ -61,8 +68,17 @@ class ProfesorController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(profesor $profesor)
+    public function destroy(int $id)
     {
+
+        $profesor = Profesor::find($id);
+
+        session()->flash("status", "se borro correctamente elprofesor $profesor->nombre");
+        $profesor->delete();
+        $profesor = Profesor::all();
+
+
+        return view("Profesores.listado_profesore", ["Profesor" => $profesor]);
         //
     }
 }
