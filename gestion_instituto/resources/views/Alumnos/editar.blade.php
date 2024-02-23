@@ -7,7 +7,7 @@
             @csrf
             @method('PUT')
 
-            <h1>Pantall de creacion  </h1>
+            <h1>Pantall de edicion  </h1>
 
             <div>
                 <x-input-label for="nombre" :value="__('nombre')" />

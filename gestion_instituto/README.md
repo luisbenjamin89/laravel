@@ -110,4 +110,13 @@ $profesor=Profesor::all();
 
 ## Eliminar profesores 
 
+*primeramente tenemos que verificar que tipo de depeticiones resive el metodo Delete haciendo un (php artisan route:list)
+en el cual verificamos que por DELETE el cual se solicita medienta un metodo POST  de la sigueiten manera 
 
+<form action="/Profesores/{{$profesor->id}}" method="POST"> (definimos el metodo y enviamos al controlador el id del profesor que queremos eleminar el cual lo va a resibir en el metodo destroy )
+
+     @csrf (con esto hacermos que laravel nos permita tener el cifrado y poder salir a otra pagina)
+    @method("DELETE") (aqui cambiamos el metrodo de POST a  Delete )
+    <button >
+     </button>
+      </form>

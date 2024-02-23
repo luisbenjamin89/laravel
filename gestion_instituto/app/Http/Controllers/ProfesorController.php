@@ -52,16 +52,25 @@ class ProfesorController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(profesor $profesor)
+    public function edit(int $id)
     {
+        $profesor = Profesor::find($id);
+
+        return view("Profesores.editar_profesor", ["profesor" => $profesor]);
         //
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdateprofesorRequest $request, profesor $profesor)
+    public function update(UpdateprofesorRequest $request, int $id)
     {
+        $profesor = Profesor::find($id);
+       $valores = $request->input();
+       $profesor->update($valores);
+        session()->flash("status", "se actulizo correctamente el profesor ");
+      $profesor = Profesor::all();
+     return view("Profesores.listado_profesore", ["Profesor" => $profesor]);
         //
     }
 
@@ -72,9 +81,8 @@ class ProfesorController extends Controller
     {
 
         $profesor = Profesor::find($id);
-
-        session()->flash("status", "se borro correctamente elprofesor $profesor->nombre");
         $profesor->delete();
+        session()->flash("status", "se borro correctamente elprofesor $profesor->nombre");
         $profesor = Profesor::all();
 
 
