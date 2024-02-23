@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\StoreprofesorRequest;
 use App\Http\Requests\UpdateprofesorRequest;
-use App\Models\profesor;
+use App\Models\Profesor;
 
 class ProfesorController extends Controller
 {
@@ -13,7 +13,9 @@ class ProfesorController extends Controller
      */
     public function index()
     {
-        //
+         $profesor=Profesor::all();
+        return view("Profesores.listado_profesore",["Profesor"=>$profesor]);
+        // 
     }
 
     /**
