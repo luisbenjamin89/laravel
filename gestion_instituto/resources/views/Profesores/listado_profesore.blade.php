@@ -3,8 +3,23 @@
 
     <div class="overflow-x-auto max-h-full bg-black">
 
+
+
         @if (session('status'))
-        <h1>{{session('status')}}</h1>
+        <script>
+            Swal.fire({
+                title: "Good job!",
+                text: "{{session('status')}}",
+                icon: "success"
+            });
+        </script>
+        <!--         <div id="alertSession" role="alert" class="alert alert-info">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" class="stroke-current shrink-0 w-6 h-6">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+            </svg>
+            <span>{{session('status')}}</span>
+        </div> -->
+
         @endif
 
         <a href="/Profesores/create" class=" btn btn-primary ">Añadir profesor</a>
@@ -25,7 +40,7 @@
                     <td>{{$profesor -> email}}</td>
                     <td>{{$profesor -> departamento}}</td>
                     <td>
-                        <form action="/Profesores/{{$profesor->id}}" method="POST">
+                        <form action="/Profesores/{{$profesor->id}}" method="POST" onclick="confirmDeletion(event, this)">
                             @csrf
                             @method("DELETE")
                             <button class="btn btn-outline btn-error" style="background-color: rgb(255, 255, 255, 0.2)" type="submit"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
@@ -46,5 +61,31 @@
             </tbody>
         </table>
     </div>
+    /* esto nos permite tener un tiempo visible el div con el mesaje con la variable de secion */
+    <script>
+        window.onload = () =>
+            setTimeout(() => {
+                document.getElementById("alertSession").style.display = "none";
+            }, 5000);;
+    </script>
+    <script>
+        function confirmDeletion(event, button) {
+            event.preventDefault();
+            Swal.fire({
+                title: '¿Estás seguro?',
+                text: "No podrás revertir esto!",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Sí, borrarlo!'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    // Buscar el formulario más cercano y enviarlo
+                    button.closest('form').submit();
+                }
+            });
+        }
+    </script>
 
 </x-layouts.layout>
