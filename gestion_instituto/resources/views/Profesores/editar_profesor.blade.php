@@ -40,7 +40,7 @@
                 </select>
             </label>
 
-            <x-primary-button class="ms-3">
+            <x-primary-button class="ms-3" onclick="confirmEdit(event, this)">
                 {{ __('actuilizar') }}
             </x-primary-button>
 
@@ -48,6 +48,26 @@
 
     </div>
 
+    <script>
+        function confirmEdit(event, button) {
+            event.preventDefault();
+            Swal.fire({
+                title: "Quieres guardar los cambios?",
+                showDenyButton: true,
+                showCancelButton: true,
+                confirmButtonText: "Guardar",
+                denyButtonText: `No Guardar`
+            }).then((result) => {
+                /* Read more about isConfirmed, isDenied below */
+                if (result.isConfirmed) {
+                    Swal.fire("Guardar", "", "success");
+                    button.closest('form').submit();
+                } else if (result.isDenied) {
+                    Swal.fire("Los cambios no fueron guardados ", "", "info");
+                }
+            });
+        }
+    </script>
 
 
 
