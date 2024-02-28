@@ -13,7 +13,7 @@ class AlumnoController extends Controller
      */
     public function index()
     {
-        $alumnos=Alumno::all();
+        $alumnos=Alumno::paginate(5);
         return view("Alumnos.listado",["alumnos"=>$alumnos]);
     }
 
@@ -34,7 +34,7 @@ class AlumnoController extends Controller
         $valores =$request->input();
         $alumno =new Alumno($valores);
         $alumno -> save();
-        $alumnos= Alumno::all();
+        $alumnos= Alumno::paginate(5);
         return view("Alumnos.listado",["alumnos"=>$alumnos]);
 
     }
@@ -63,7 +63,7 @@ class AlumnoController extends Controller
     {
        $valores=$request->input();
        $alumno->update($valores);
-       $alumno = Alumno::all();
+       $alumno = paginate(5);
       return view("Alumnos.listado", ["alumnos" => $alumno]);//
     }
 
@@ -73,7 +73,7 @@ class AlumnoController extends Controller
     public function destroy(Alumno $alumno)
     {
         $alumno->delete();
-        $alumnos = Alumno::all();
+        $alumnos = Alumno::paginate(5);
         return view("Alumnos.listado", ["alumnos" => $alumnos]);
         //
     }

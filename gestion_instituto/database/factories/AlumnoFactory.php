@@ -9,6 +9,7 @@ use Illuminate\Database\Eloquent\Factories\Factory;
  */
 class AlumnoFactory extends Factory
 {
+  
     /**
      * Define the model's default state.
      *
@@ -19,6 +20,7 @@ class AlumnoFactory extends Factory
         return [
             'nombre'=> fake()->name(),
             'apellido'=> fake()->lastName(),
+            
             'direccion'=> fake()->address(),
             'emil'=> fake()->email(),
             'telefono'=> fake()->phoneNumber(),
