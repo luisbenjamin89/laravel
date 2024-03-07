@@ -6,16 +6,14 @@ use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use App\Models\Alumno;
 use App\Models\Ideoma;
+use App\Models\Idioma;
 
 class AlumnoSeeder extends Seeder
 {
 
     private function get_idiomas(): array
     {
-        $idiomas = [
-            "Francés", "Inglés", "Alemán", "Ruso", "Rumano", "Portugués",
-            "Catalán", "Gallego", "Fabla", "Vasco", "Italiano", "Chino"
-        ];
+       $idiomas =config("idiomas.idiomas");
         $idiomas_hablados = [];
         $numero_idiomas = rand(0, 4);
         if ($numero_idiomas == 0)
@@ -37,7 +35,7 @@ class AlumnoSeeder extends Seeder
         Alumno::factory()->count(50)->create()->each(function ($alumno) {
             $idiomas_hablados = $this->get_idiomas();
             foreach ($idiomas_hablados as $idioma_hablado) {
-                $idioma = new Ideoma();
+                $idioma = new Idioma();
                 $idioma->ideoma = $idioma_hablado;
                 $idioma->alumno_id = $alumno->id;
                 $idioma->save();

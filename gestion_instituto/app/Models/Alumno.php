@@ -15,4 +15,8 @@ class Alumno extends Model
         'telefono',
         'emil'
     ];
+    public function idioma()
+    {
+        return $this->hasMany(Idioma::class);
+}
 }

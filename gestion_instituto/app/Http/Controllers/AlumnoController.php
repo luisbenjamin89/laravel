@@ -44,7 +44,7 @@ class AlumnoController extends Controller
      */
     public function show(Alumno $alumno)
     {
-        //
+     return view("Alumnos.idiomas", ["alumno" => $alumno]);
     }
 
     /**

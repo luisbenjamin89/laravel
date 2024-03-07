@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\StoreIdeomaRequest;
 use App\Http\Requests\UpdateIdeomaRequest;
-use App\Models\Ideoma;
+use App\Models\Idioma;
 
 class IdeomaController extends Controller
 {
@@ -35,7 +35,7 @@ class IdeomaController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Ideoma $ideoma)
+    public function show(Idioma $ideoma)
     {
         //
     }
@@ -43,7 +43,7 @@ class IdeomaController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Ideoma $ideoma)
+    public function edit(Idioma $ideoma)
     {
         //
     }
@@ -51,7 +51,7 @@ class IdeomaController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdateIdeomaRequest $request, Ideoma $ideoma)
+    public function update(UpdateIdeomaRequest $request, Idioma $ideoma)
     {
         //
     }
@@ -59,7 +59,7 @@ class IdeomaController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Ideoma $ideoma)
+    public function destroy(Idioma $ideoma)
     {
         //
     }

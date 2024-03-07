@@ -15,7 +15,7 @@
             </thead>
             <tbody>
                 @foreach($alumnos as $alumno)
-                <tr>
+                <tr onclick="editar_alumno({{$alumno->id}})" class="hover:bg-blue-600 hover:cursor-pointer">
                     <td>{{$alumno -> nombre}}</td>
                     <td>{{$alumno -> apellido}}</td>
                     <td>{{$alumno -> direccion}}</td>
@@ -44,6 +44,11 @@
         </table>
     </div>
 
+    <script>
+        function editar_alumno(id) {
+            window.location = `http://localhost:8000/alumnos/${id}`
+        }
+    </script>
 
     {{$alumnos->links()}}
 
