@@ -38,3 +38,7 @@ Route::middleware('auth')->group(function () {
 });
 
 require __DIR__.'/auth.php';
+
+Route::view("saludo","saludo");
+
+Route::get("main",\App\Http\Controllers\MainController::class);

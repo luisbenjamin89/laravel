@@ -120,3 +120,7 @@ en el cual verificamos que por DELETE el cual se solicita medienta un metodo POS
     <button >
      </button>
       </form>
+
+
+
+      
